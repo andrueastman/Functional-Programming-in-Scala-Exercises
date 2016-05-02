@@ -139,10 +139,22 @@ class FunSetSuite extends FunSuite {
     }
   }
   
-  test("For all") {
+  test("forall positive numbers") {
     new TestSets {
-      // TO DO
+      val s = union(s1, union(s2,s3))
+      assert(forall(s, x => x > 0), "forall positive")
     }
   }
 
+  test("exists at least a number greater than 1") {
+    new TestSets {
+      assert(exists(union(s1,s2), x => x > 1), "exists greater 1")
+    }
+  }
+
+  test("map multiplying by 3") {
+    new TestSets {
+      assert(contains(map(s3, x => x * 3), 9), "map multiplying by 3 set s3")
+    }
+  }
 }
